@@ -1,6 +1,4 @@
-<?php
-    include('header.php');
-?>
+<?php include('header.php'); ?>
 
 <div>
     <svg mapsvg:geoViewBox="99.639555 7.364329 119.270884 0.853582" width="792.50256" height="262.17609">
@@ -69,28 +67,7 @@
 </div>
 
 <?php
-    $date = date("Y-m-d", strtotime("-1 days"));
     echo '<p>'.$date.'</p>'; #chg to check whether csv got today data onot, if no only show ytd
-
-    $cases_data = file_get_contents('https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_malaysia.csv');
-    $death_data = file_get_contents('https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv');
-    $cases_list = explode("\n", $cases_data);
-    $death_list = explode("\n", $death_data);
-    #echo '<pre>'.$data.'</pre>';
-    #print_r($cases_list);
-    
-    foreach($cases_list as $cases_record) {
-        #$index = ;
-        if (strpos($cases_record, $date) !== false){
-            $cases_record_cases_today = $cases_record; 
-            $index = array_search($cases_record, $cases_list);
-            $cases_record_cases_ytd = $cases_list[$index-1];
-            #echo $cases_record_cases_ytd;
-        }
-    }
-    $cases_today = explode(',',$cases_record_cases_today);
-    $cases_ytd = explode(',', $cases_record_cases_ytd);
-    #print_r($cases_today);
     
 ?>
     <div>
@@ -101,9 +78,20 @@
         <p>Imported <?php echo $cases_today[2]; ?></p>
         <p>Active cases</p>
         <p><?php echo $cases_today[4] . ' ' . (int)$cases_today[4]-(int)$cases_ytd[4]; ?></p>
-        <p>Recovered</p>
+    </div>
+    <div>
+        <b>Recovered</b>
         <p><?php echo $cases_today[3]; ?></p>
     </div>
-<?php
-    include('footer.php');
-?>
+
+    <div>
+        <b>Deaths</b>
+        <p><?php echo $death_today[1]; ?></p>
+    </div>
+
+    <div>
+        <b>Vaccinations</b>
+        <p><?php echo $vac_today[4]; ?></p>
+    </div>
+
+<?php include('footer.php'); ?>
