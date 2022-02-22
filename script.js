@@ -28,7 +28,7 @@ function drawChart() {
     }
     var casesranged = cases.slice(pos-1, cases.length);
     casesranged[0] = cases[0];
-    console.log(casesranged);
+    //console.log(casesranged);
 
     var data = google.visualization.arrayToDataTable(casesranged);
 
