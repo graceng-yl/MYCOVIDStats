@@ -47,3 +47,20 @@ function drawChart() {
 
       chart.draw(data, options);
   }
+
+
+
+jQuery(document).ready(function() {
+	document.getElementById('statedropdown').addEventListener("change", function(){
+        //console.log('hello');
+        document.getElementById('statedropdown').submit();
+    });
+
+    var state = document.getElementById('state').title;
+    jQuery.each(jQuery('#statedropdownselect option'), function(i, val){
+        if(val.value == state){
+            jQuery(val).attr('selected','selected');
+        }
+    });
+
+});

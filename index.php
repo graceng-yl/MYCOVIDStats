@@ -1,10 +1,14 @@
 <?php 
     include('header.php'); 
     // the program only show ytd data
-    $state = ''; //to chg
+    $state = '';
+    if(isset($_GET['selectedstate'])){
+        $state = $_GET['selectedstate']; 
+    }
     $date = date("Y-m-d", strtotime("-1 days")); 
     $ytddate = date("Y-m-d", strtotime("-2 days")); 
 
+    //delete old files
     if(file_exists("state_cases_".$ytddate.".csv")){
         unlink("state_cases_".$ytddate.".csv");
         unlink("state_deaths_".$ytddate.".csv");
@@ -14,6 +18,7 @@
         unlink("msia_vac_".$ytddate.".csv");
     }
 
+    //dl new file if not yet dl
     if(!file_exists("state_cases_".$date.".csv")){
         file_put_contents("state_cases_".$date.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv"));
     }if(!file_exists("state_deaths_".$date.".csv")){
@@ -120,16 +125,7 @@
     }
 
     //state data
-    else{
-        //retrieve ytd active cases for overview
-        // foreach($state_cases as $state_cases_record) {
-        //     if ($state_cases_record[0] == $date && $state_cases_record[1] == $state){
-        //         $index = array_search($state_cases_record, $state_cases);
-        //         $cases_record_ytd = $state_cases[$index-16];
-        //     }
-        // }
-        // $cases_ytd = $cases_record_ytd;
-        
+    else{        
         //today data
         foreach ($state_cases as $state_case_record){ 
             if($rowno==0){ //if first row
@@ -187,7 +183,7 @@
 
 ?>
     <script>var graph_array=<?php echo json_encode($graph_array); ?>;</script>
-    <p><?php echo $state; ?></p>
+    <p id='state' title='<?php echo $state; ?>'><?php echo $state; ?></p>
     <div><?php echo $date; ?></div>
 
 
