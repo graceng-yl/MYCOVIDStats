@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
         <script src="script.js"></script>
     </head>
 

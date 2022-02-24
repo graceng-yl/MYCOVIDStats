@@ -43,10 +43,13 @@
 <?php 
     if($state==''){
 ?>
-        <table>
-            <tr>
-                <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccination</th>
-            </tr>
+        <table id='staterecords'>
+            <thead>
+                <tr>
+                    <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccination</th>
+                </tr>
+            </thead>
+            <tbody>
 <?php
         foreach($today_state_data as $state_record){
 ?>
@@ -62,9 +65,9 @@
             </tr>
 <?php
         }
-?>      
-            <tr>
-                <td>Sum</td>
+?>          </tbody>
+            <tr class='sumrecord'>
+                <td></td>
                 <td><?php echo $today_data[0]; ?></td>
                 <td><?php echo (int)$today_data[0]-(int)$today_data[1]; ?></td>
                 <td><?php echo $today_data[1]; ?></td>

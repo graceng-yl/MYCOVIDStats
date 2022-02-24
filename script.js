@@ -1,4 +1,14 @@
 jQuery(document).ready(function() {
+    jQuery('#staterecords').DataTable({
+        //"aaSorting": [],
+        "columnDefs": [
+            { "orderSequence": [ "desc","asc" ], "targets": [ 1,2,3,4,5,6,7 ] }],
+        "order": [[ 1, "desc" ]],
+        "paging": false,
+        "searching": false,
+        "info": false
+    });
+
 	document.getElementById('statedropdown').addEventListener("change", function(){
         //console.log('hello');
         document.getElementById('statedropdown').submit();
@@ -111,7 +121,7 @@ function drawChart() {
         title: '',
         legend: { position: 'right' },
         focusTarget: 'category',
-        //height: jQuery(window).height()*1.2,
+        height: jQuery(window).height(),
         //width: jQuery(window).width()*0.98,
         vAxis: { title: 'Number', viewWindow: { min:0 } },
         hAxis: { title: 'Date' },
