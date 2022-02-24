@@ -1,6 +1,6 @@
 <?php 
-    include('header.php'); 
-    include('data.php');
+    include('pages/header.php'); 
+    include('pages/data.php');
 ?>
     <script>
         //for data passing
@@ -96,5 +96,5 @@
     <div id="trend_graph"></div>
 
 <?php
-    include('footer.php'); 
+    include('pages/footer.php'); 
 ?>

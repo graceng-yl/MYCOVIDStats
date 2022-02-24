@@ -9,40 +9,40 @@
     $date_ytd = date("Y-m-d", strtotime("-2 days")); //the day before current showing data
 
     //delete old files
-    $csv_prev = glob("state_cases_*.csv");
+    $csv_prev = glob("data/state_cases_*.csv");
     foreach($csv_prev as $csv){
-        if(explode('state_cases_', $csv)[1] != $date_tdy.'.csv'){
-            $date_prev = explode('state_cases_', $csv)[1];
-            unlink("state_cases_".$date_prev);
-            unlink("state_deaths_".$date_prev);
-            unlink("state_vacs_".$date_prev);
-            unlink("msia_cases_".$date_prev);
-            unlink("msia_deaths_".$date_prev);
-            unlink("msia_vacs_".$date_prev);
+        if(explode('data/state_cases_', $csv)[1] != $date_tdy.'.csv'){
+            $date_prev = explode('data/state_cases_', $csv)[1];
+            unlink("data/state_cases_".$date_prev);
+            unlink("data/state_deaths_".$date_prev);
+            unlink("data/state_vacs_".$date_prev);
+            unlink("data/msia_cases_".$date_prev);
+            unlink("data/msia_deaths_".$date_prev);
+            unlink("data/msia_vacs_".$date_prev);
         }
     }
 
     //dl new file if not yet dl
-    if(!file_exists("state_cases_".$date_tdy.".csv")){
-        file_put_contents("state_cases_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv"));
-    }if(!file_exists("state_deaths_".$date_tdy.".csv")){
-        file_put_contents("state_deaths_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_state.csv"));
-    }if(!file_exists("state_vacs_".$date_tdy.".csv")){
-        file_put_contents("state_vacs_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_state.csv"));
-    }if(!file_exists("msia_cases_".$date_tdy.".csv")){
-        file_put_contents("msia_cases_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_malaysia.csv"));
-    }if(!file_exists("msia_deaths_".$date_tdy.".csv")){
-        file_put_contents("msia_deaths_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv"));
-    }if(!file_exists("msia_vacs_".$date_tdy.".csv")){
-        file_put_contents("msia_vacs_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv"));
+    if(!file_exists("data/state_cases_".$date_tdy.".csv")){
+        file_put_contents("data/state_cases_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_state.csv"));
+    }if(!file_exists("data/state_deaths_".$date_tdy.".csv")){
+        file_put_contents("data/state_deaths_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_state.csv"));
+    }if(!file_exists("data/state_vacs_".$date_tdy.".csv")){
+        file_put_contents("data/state_vacs_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_state.csv"));
+    }if(!file_exists("data/msia_cases_".$date_tdy.".csv")){
+        file_put_contents("data/msia_cases_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/cases_malaysia.csv"));
+    }if(!file_exists("data/msia_deaths_".$date_tdy.".csv")){
+        file_put_contents("data/msia_deaths_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/epidemic/deaths_malaysia.csv"));
+    }if(!file_exists("data/msia_vacs_".$date_tdy.".csv")){
+        file_put_contents("data/msia_vacs_".$date_tdy.".csv", file_get_contents("https://raw.githubusercontent.com/MoH-Malaysia/covid19-public/main/vaccination/vax_malaysia.csv"));
     }
     
-    $state_cases = array_map('str_getcsv', file("state_cases_".$date_tdy.".csv"));
-    $state_deaths = array_map('str_getcsv', file("state_deaths_".$date_tdy.".csv"));
-    $state_vacs = array_map('str_getcsv', file("state_vacs_".$date_tdy.".csv"));
-    $msia_cases = array_map('str_getcsv', file("msia_cases_".$date_tdy.".csv"));
-    $msia_deaths = array_map('str_getcsv', file("msia_deaths_".$date_tdy.".csv"));
-    $msia_vacs = array_map('str_getcsv', file("msia_vacs_".$date_tdy.".csv"));
+    $state_cases = array_map('str_getcsv', file("data/state_cases_".$date_tdy.".csv"));
+    $state_deaths = array_map('str_getcsv', file("data/state_deaths_".$date_tdy.".csv"));
+    $state_vacs = array_map('str_getcsv', file("data/state_vacs_".$date_tdy.".csv"));
+    $msia_cases = array_map('str_getcsv', file("data/msia_cases_".$date_tdy.".csv"));
+    $msia_deaths = array_map('str_getcsv', file("data/msia_deaths_".$date_tdy.".csv"));
+    $msia_vacs = array_map('str_getcsv', file("data/msia_vacs_".$date_tdy.".csv"));
 
     $data_all = array(); 
     $row = 0;
