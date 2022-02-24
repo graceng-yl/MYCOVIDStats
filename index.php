@@ -4,7 +4,9 @@
 ?>
     <script>
         var graph_array=<?php echo json_encode($graph_array); ?>;
-        console.log(graph_array[1][0]);
+        var date=<?php echo json_encode($date); ?>;
+        var mindate=<?php echo json_encode($mindate); ?>;
+        //console.log(graph_array[1][0]);
     </script>
     <p id='state' title='<?php echo $state; ?>'><?php echo $state; ?></p>
     <div><?php echo $date; ?></div>
@@ -76,10 +78,12 @@
     }
 ?>  
     <form id=dateselector onsubmit="return false;">
-        <input type="date" id='startdate' required>
-        <input type="date" id='enddate' required>
+        <input type="date" id='startdate'>
+        <input type="date" id='enddate'>
         <input type="submit" value="Filter" id='filter'>
+        
     </form>
+    <span id='filtermessage'>Please select a valid range</span>
     <div id="trendgraph"></div>
 
 <?php

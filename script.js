@@ -11,23 +11,37 @@ jQuery(document).ready(function() {
         }
     });
 
-    //google.charts.load('current', {packages: ['corechart']});
-//google.charts.setOnLoadCallback(drawChart);
+    //restrict date range
+    jQuery('#startdate').attr('min', mindate);
+    jQuery('#enddate').attr('min', mindate);
+    jQuery('#startdate').attr('max', date);
+    jQuery('#enddate').attr('max', date);
+    document.getElementById('startdate').addEventListener("change", function(){
+        var start = document.getElementById('startdate').value; 
+        jQuery('#enddate').attr('min', start);
+    });
+    document.getElementById('enddate').addEventListener("change", function(){
+        var end = document.getElementById('enddate').value; 
+        jQuery('#startdate').attr('max', end);
+    });
 
     //to choose start and end range
     document.getElementById('filter').addEventListener("click", function(){
-        startdate = document.getElementById('startdate').value; 
-        enddate = document.getElementById('enddate').value;
-        var splitted_startdate = startdate.split('-');
-        var splitted_enddate = enddate.split('-');
-        startdate = new Date(splitted_startdate[0], parseInt(splitted_startdate[1])-1, splitted_startdate[2]);
-        enddate = new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]);
-        //console.log(new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]));
-        //drawChart(startdate, enddate);
-        drawChart();
+        if(document.getElementById('startdate').value=='' || document.getElementById('enddate').value==''){
+            jQuery('#filtermessage').show().delay(2000).fadeOut(); //if no set either one
+        }else{
+            startdate = document.getElementById('startdate').value; 
+            enddate = document.getElementById('enddate').value;
+            var splitted_startdate = startdate.split('-');
+            var splitted_enddate = enddate.split('-');
+            startdate = new Date(splitted_startdate[0], parseInt(splitted_startdate[1])-1, splitted_startdate[2]);
+            enddate = new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]);
+            //console.log(new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]));
+            //drawChart(startdate, enddate);
+            drawChart();
+        }
     });
 });
-
 
 
 var d = new Date();
@@ -54,7 +68,7 @@ function addrows(start, end, data){
 function drawChart() {
     var cases = JSON.parse(JSON.stringify(graph_array)); // deep copy
     //console.log(graph_array === cases);
-    console.log(cases);
+    //console.log(cases);
     
     
     for(var record=0; record<cases.length; record++){
@@ -78,12 +92,12 @@ function drawChart() {
         if (cases[record].map(Number).indexOf(+startdate) !== -1){
             //console.log(cases[record]);
             startpos = cases.indexOf(cases[record]);
-            console.log(startpos);
+            //console.log(startpos);
         }
         if (cases[record].map(Number).indexOf(+enddate) !== -1){
             //console.log(cases[record]);
             endpos = cases.indexOf(cases[record]);
-            console.log(endpos);
+            //console.log(endpos);
         }
     }
     // var casesranged = cases.slice(startpos, endpos);

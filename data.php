@@ -7,6 +7,7 @@ use function PHPSTORM_META\type;
     if(isset($_GET['selectedstate'])){
         $state = $_GET['selectedstate']; 
     }
+    $mindate = "2020-01-25";
     $date = date("Y-m-d", strtotime("-1 days")); 
     $ytddate = date("Y-m-d", strtotime("-2 days")); 
 
