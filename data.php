@@ -1,5 +1,8 @@
 <?php
     // the program only show ytd data
+
+use function PHPSTORM_META\type;
+
     $state = '';
     if(isset($_GET['selectedstate'])){
         $state = $_GET['selectedstate']; 
@@ -8,13 +11,17 @@
     $ytddate = date("Y-m-d", strtotime("-2 days")); 
 
     //delete old files
-    if(file_exists("state_cases_".$ytddate.".csv")){
-        unlink("state_cases_".$ytddate.".csv");
-        unlink("state_deaths_".$ytddate.".csv");
-        unlink("state_vac_".$ytddate.".csv");
-        unlink("msia_cases_".$ytddate.".csv");
-        unlink("msia_deaths_".$ytddate.".csv");
-        unlink("msia_vac_".$ytddate.".csv");
+    $prevcsv = glob("state_cases_*.csv");
+    foreach($prevcsv as $csv){
+        if(explode('state_cases_', $csv)[1] != $date.'.csv'){
+            $prevdate = explode('state_cases_', $csv)[1];
+            unlink("state_cases_".$prevdate);
+            unlink("state_deaths_".$prevdate);
+            unlink("state_vac_".$prevdate);
+            unlink("msia_cases_".$prevdate);
+            unlink("msia_deaths_".$prevdate);
+            unlink("msia_vac_".$prevdate);
+        }
     }
 
     //dl new file if not yet dl
@@ -54,6 +61,7 @@
                 $rowno = 1; //done, set to any other value so that the data rows use elseif
             }
             else{
+                //print(gettype($case_record[0]));
                 if ($case_record[0] == $ytddate){ //ytd data
                     $cases_ytd = $case_record[4];
                 }
@@ -89,7 +97,7 @@
                     if($case_record[0] == $date){
                         $today_data = [$case_record[1], $case_record[2], $case_record[4], $case_record[3], 0, $vac_record[4]];
                     }
-                }elseif($datematch=='N' && $vacdatematch=='Y' && $state == ''){
+                }elseif($datematch=='N' && $vacdatematch=='N' && $state == ''){
                     array_push($graph_array, [$case_record[0], $case_record[1], $case_record[4], $case_record[3], 0, 0]);
                     if($case_record[0] == $date){
                         $today_data = [$case_record[1], $case_record[2], $case_record[4], $case_record[3], 0, 0];
@@ -178,4 +186,5 @@
             }
         }
     }
+
 ?>

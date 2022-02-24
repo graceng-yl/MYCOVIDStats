@@ -11,8 +11,8 @@ jQuery(document).ready(function() {
         }
     });
 
-    google.charts.load('current', {packages: ['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+    //google.charts.load('current', {packages: ['corechart']});
+//google.charts.setOnLoadCallback(drawChart);
 
     //to choose start and end range
     document.getElementById('filter').addEventListener("click", function(){
@@ -30,47 +30,38 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 
-
+var d = new Date();
+var startdate = new Date(d.setDate(d.getDate() - 31));
+//console.log(startdate);
+startdate = startdate.setHours(0,0,0,0);
+//console.log(startdate);
+var d = new Date();
+var enddate = new Date(d.setDate(d.getDate() - 1));
+enddate = enddate.setHours(0,0,0,0);
+    
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
 function addrows(start, end, data){
-    //console.log(start-1);
-    console.log(start, end, data);
-    var length = data.getNumberOfRows()-end;
-    data.removeRows(0, start-1);
-    data.removeRows(end, length);
-    //data = data.removeRows(end+1, length-end+1);
-
-    // for (var i = start-1; i == 0; i--) {
-    //   data = data.removeRow(i);
-    // }
-    // for (var i = end; i < data.getNumberOfRows(); i++){
-    //   console.log('hi');
-    //   data = data.removeRow(i);
-    // }
-    //console.log(data.getNumberOfRows());
+    var lengthfromend = (data.getNumberOfRows()+1)-(end+1);
+    //console.log(lengthfromend);
+    data.removeRows(0, start-1); //remove 0 to start-1
+    data.removeRows(end+1-start, lengthfromend); //remove 0+end-start to total-end
     return data;
 }
 
 function drawChart() {
-    console.log(graph_array);
-    var cases = Array.from(graph_array); //
-    var d = new Date();
-    var startdate = new Date(d.setDate(d.getDate() - 31));
-    //console.log(startdate);
-    startdate = startdate.setHours(0,0,0,0);
-    //console.log(startdate);
-    var d = new Date();
-    var enddate = new Date(d.setDate(d.getDate() - 1));
-    enddate = enddate.setHours(0,0,0,0);
+    var cases = JSON.parse(JSON.stringify(graph_array)); // deep copy
+    //console.log(graph_array === cases);
+    console.log(cases);
+    
     
     for(var record=0; record<cases.length; record++){
         if(record!=0){
             for(var item=0; item<cases[record].length; item++){
                 if(item==0){
-                    console.log(cases[record][item]);
+                    //console.log(cases[record][item]);
                     var splitted = cases[record][item].split('-');
                     cases[record][item] = new Date(splitted[0], parseInt(splitted[1])-1, splitted[2]);
                 }
@@ -87,10 +78,12 @@ function drawChart() {
         if (cases[record].map(Number).indexOf(+startdate) !== -1){
             //console.log(cases[record]);
             startpos = cases.indexOf(cases[record]);
+            console.log(startpos);
         }
         if (cases[record].map(Number).indexOf(+enddate) !== -1){
             //console.log(cases[record]);
             endpos = cases.indexOf(cases[record]);
+            console.log(endpos);
         }
     }
     // var casesranged = cases.slice(startpos, endpos);
@@ -99,6 +92,7 @@ function drawChart() {
     var data = google.visualization.arrayToDataTable(cases);
     //console.log(startpos, endpos, data);
     data = addrows(startpos, endpos, data);
+    
     var options = {
         title: '',
         legend: { position: 'right' },

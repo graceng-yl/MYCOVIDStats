@@ -2,7 +2,10 @@
     include('header.php'); 
     include('data.php');
 ?>
-    <script>var graph_array=<?php echo json_encode($graph_array); ?>;</script>
+    <script>
+        var graph_array=<?php echo json_encode($graph_array); ?>;
+        console.log(graph_array[1][0]);
+    </script>
     <p id='state' title='<?php echo $state; ?>'><?php echo $state; ?></p>
     <div><?php echo $date; ?></div>
 
@@ -72,10 +75,10 @@
 <?php
     }
 ?>  
-    <form id=dateselector>
-        <input type="date" id='startdate'>
-        <input type="date" id='enddate'>
-        <div id='filter'>Filter</div>
+    <form id=dateselector onsubmit="return false;">
+        <input type="date" id='startdate' required>
+        <input type="date" id='enddate' required>
+        <input type="submit" value="Filter" id='filter'>
     </form>
     <div id="trendgraph"></div>
 
