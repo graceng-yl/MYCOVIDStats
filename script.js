@@ -1,121 +1,54 @@
-jQuery(document).ready(function() {
-    jQuery('#staterecords').DataTable({
-        //"aaSorting": [],
-        "columnDefs": [
-            { "orderSequence": [ "desc","asc" ], "targets": [ 1,2,3,4,5,6,7 ] }],
-        "order": [[ 1, "desc" ]],
-        "paging": false,
-        "searching": false,
-        "info": false
-    });
-
-	document.getElementById('statedropdown').addEventListener("change", function(){
-        //console.log('hello');
-        document.getElementById('statedropdown').submit();
-    });
-
-    var state = document.getElementById('state').title;
-    jQuery.each(jQuery('#statedropdownselect option'), function(i, val){
-        if(val.value == state){
-            jQuery(val).attr('selected','selected');
-        }
-    });
-
-    //restrict date range
-    jQuery('#startdate').attr('min', mindate);
-    jQuery('#enddate').attr('min', mindate);
-    jQuery('#startdate').attr('max', date);
-    jQuery('#enddate').attr('max', date);
-    document.getElementById('startdate').addEventListener("change", function(){
-        var start = document.getElementById('startdate').value; 
-        jQuery('#enddate').attr('min', start);
-    });
-    document.getElementById('enddate').addEventListener("change", function(){
-        var end = document.getElementById('enddate').value; 
-        jQuery('#startdate').attr('max', end);
-    });
-
-    //to choose start and end range
-    document.getElementById('filter').addEventListener("click", function(){
-        if(document.getElementById('startdate').value=='' || document.getElementById('enddate').value==''){
-            jQuery('#filtermessage').show().delay(2000).fadeOut(); //if no set either one
-        }else{
-            startdate = document.getElementById('startdate').value; 
-            enddate = document.getElementById('enddate').value;
-            var splitted_startdate = startdate.split('-');
-            var splitted_enddate = enddate.split('-');
-            startdate = new Date(splitted_startdate[0], parseInt(splitted_startdate[1])-1, splitted_startdate[2]);
-            enddate = new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]);
-            //console.log(new Date(splitted_enddate[0], parseInt(splitted_enddate[1])-1, splitted_enddate[2]));
-            //drawChart(startdate, enddate);
-            drawChart();
-        }
-    });
-});
-
-
+//default trand graph date range
 var d = new Date();
-var startdate = new Date(d.setDate(d.getDate() - 31));
-//console.log(startdate);
-startdate = startdate.setHours(0,0,0,0);
-//console.log(startdate);
+var start_date = new Date(d.setDate(d.getDate() - 31));
+start_date = start_date.setHours(0,0,0,0);
 var d = new Date();
-var enddate = new Date(d.setDate(d.getDate() - 1));
-enddate = enddate.setHours(0,0,0,0);
-    
+var end_date = new Date(d.setDate(d.getDate() - 1));
+end_date = end_date.setHours(0,0,0,0);
+
+
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
 
-function addrows(start, end, data){
-    var lengthfromend = (data.getNumberOfRows()+1)-(end+1);
-    //console.log(lengthfromend);
-    data.removeRows(0, start-1); //remove 0 to start-1
-    data.removeRows(end+1-start, lengthfromend); //remove 0+end-start to total-end
+function addrows(start_date_pos, end_date_pos, data){
+    var length_from_end = (data.getNumberOfRows()+1)-(end_date_pos+1);
+    data.removeRows(0, start_date_pos-1); //remove 0 to start_date_pos-1
+    data.removeRows(end_date_pos+1-start_date_pos, length_from_end); //remove 0+end_date_pos-start_date_pos to total-end_date_pos
     return data;
 }
 
+
 function drawChart() {
-    var cases = JSON.parse(JSON.stringify(graph_array)); // deep copy
-    //console.log(graph_array === cases);
-    //console.log(cases);
-    
-    
-    for(var record=0; record<cases.length; record++){
+    var predata = JSON.parse(JSON.stringify(data_all)); // deep copy
+    for(var record=0; record<predata.length; record++){
         if(record!=0){
-            for(var item=0; item<cases[record].length; item++){
+            for(var item=0; item<predata[record].length; item++){
                 if(item==0){
-                    //console.log(cases[record][item]);
-                    var splitted = cases[record][item].split('-');
-                    cases[record][item] = new Date(splitted[0], parseInt(splitted[1])-1, splitted[2]);
+                    var data_date_split = predata[record][item].split('-');
+                    predata[record][item] = new Date(data_date_split[0], parseInt(data_date_split[1])-1, data_date_split[2]);
                 }
                 else{
-                    cases[record][item] = parseInt(cases[record][item]);
+                    predata[record][item] = parseInt(predata[record][item]);
                 }
             }
         }
     }
-    var startpos = 0;
-    var endpos = 0;
-    for(var record=0; record<cases.length; record++){
-        //console.log(startdate); //console.log(cases[record]);
-        if (cases[record].map(Number).indexOf(+startdate) !== -1){
-            //console.log(cases[record]);
-            startpos = cases.indexOf(cases[record]);
-            //console.log(startpos);
+    //find start and end position in data_all
+    var start_date_pos = 0;
+    var end_date_pos = 0;
+    for(var record=0; record<predata.length; record++){
+        if (predata[record].map(Number).indexOf(+start_date) !== -1){
+            start_date_pos = predata.indexOf(predata[record]);
         }
-        if (cases[record].map(Number).indexOf(+enddate) !== -1){
-            //console.log(cases[record]);
-            endpos = cases.indexOf(cases[record]);
-            //console.log(endpos);
+        if (predata[record].map(Number).indexOf(+end_date) !== -1){
+            end_date_pos = predata.indexOf(predata[record]);
         }
     }
-    // var casesranged = cases.slice(startpos, endpos);
-    // casesranged[0] = cases[0];
 
-    var data = google.visualization.arrayToDataTable(cases);
-    //console.log(startpos, endpos, data);
-    data = addrows(startpos, endpos, data);
+    var data = google.visualization.arrayToDataTable(predata);
+    //filter the data range
+    data = addrows(start_date_pos, end_date_pos, data);
     
     var options = {
         title: '',
@@ -127,9 +60,10 @@ function drawChart() {
         hAxis: { title: 'Date' },
         backgroundColor: 'white'
     };
-    var chart = new google.visualization.LineChart(document.getElementById('trendgraph'));
+    var chart = new google.visualization.LineChart(document.getElementById('trend_graph'));
     chart.draw(data, options);
 
+    //click to legend to hide or show 
     var columns = [];
     var series = {};
     for (var i = 0; i < data.getNumberOfColumns(); i++) {
@@ -138,7 +72,6 @@ function drawChart() {
             series[i - 1] = {};
         }
     }
-
     google.visualization.events.addListener(chart, 'select', function () {
         var sel = chart.getSelection();
         // if selection length is 0, we deselected an element
@@ -169,3 +102,59 @@ function drawChart() {
         }
     });
 }
+
+
+jQuery(document).ready(function() {
+
+    //reload page when state dropdown is chosen
+	document.getElementById('state_form').addEventListener("change", function(){
+        document.getElementById('state_form').submit();
+    });
+
+    //if state is selected, keep it selected in dropdown
+    var state = document.getElementById('state_name').title;
+    jQuery.each(jQuery('#state_form_dropdown option'), function(i, val){
+        if(val.value == state){
+            jQuery(val).attr('selected','selected');
+        }
+    });
+
+    //restrict input date range in trend graph
+    jQuery('#start_date').attr('min', date_min);
+    jQuery('#end_date').attr('min', date_min);
+    jQuery('#start_date').attr('max', date_tdy);
+    jQuery('#end_date').attr('max', date_tdy);
+    document.getElementById('start_date').addEventListener("change", function(){
+        var start_lim = document.getElementById('start_date').value; 
+        jQuery('#end_date').attr('min', start_lim);
+    });
+    document.getElementById('end_date').addEventListener("change", function(){
+        var end_lim = document.getElementById('end_date').value; 
+        jQuery('#start_date').attr('max', end_lim);
+    });
+
+    //to update when trend graph filter date button is clicked
+    document.getElementById('submit_filter').addEventListener("click", function(){
+        if(document.getElementById('start_date').value=='' || document.getElementById('end_date').value==''){
+            jQuery('#filter_message').show().delay(2000).fadeOut(); //if either one input not set
+        }else{
+            start_date = document.getElementById('start_date').value; 
+            end_date = document.getElementById('end_date').value;
+            var start_date_split = start_date.split('-');
+            var end_date_split = end_date.split('-');
+            start_date = new Date(start_date_split[0], parseInt(start_date_split[1])-1, start_date_split[2]);
+            end_date = new Date(end_date_split[0], parseInt(end_date_split[1])-1, end_date_split[2]);
+            drawChart();
+        }
+    });
+
+    //datatable for states table
+    jQuery('#states_table').DataTable({
+        "columnDefs": [{ "orderSequence": [ "desc","asc" ], "targets": [ 1,2,3,4,5,6,7 ] }], //order by desc first
+        "order": [[ 1, "desc" ]], //default order new cases by desc
+        "paging": false,
+        "searching": false,
+        "info": false
+        //no paging, searching, and info
+    });
+});

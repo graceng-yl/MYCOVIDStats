@@ -3,47 +3,53 @@
     include('data.php');
 ?>
     <script>
-        var graph_array=<?php echo json_encode($graph_array); ?>;
-        var date=<?php echo json_encode($date); ?>;
-        var mindate=<?php echo json_encode($mindate); ?>;
-        //console.log(graph_array[1][0]);
+        //for data passing
+        var data_all=<?php echo json_encode($data_all); ?>;
+        var date_tdy=<?php echo json_encode($date_tdy); ?>;
+        var date_min=<?php echo json_encode($date_min); ?>;
     </script>
-    <p id='state' title='<?php echo $state; ?>'><?php echo $state; ?></p>
-    <div><?php echo $date; ?></div>
+
+    <p id='state_name' title='<?php echo $state; ?>'><?php echo $state; ?></p>
+    <div><?php echo $date_tdy; ?></div>
 
     <div>
         <b>Cases</b>
         <p>New cases</p>
-        <p><?php echo $today_data[0]; ?></p>
-        <p>Local <?php echo (int)$today_data[0] - (int)$today_data[1]; ?></p>
-        <p>Imported <?php echo $today_data[1]; ?></p>
+        <p><?php echo $data_tdy[0]; ?></p>
+        <p>Local <?php echo (int)$data_tdy[0] - (int)$data_tdy[1]; ?></p>
+        <p>Imported <?php echo $data_tdy[1]; ?></p>
         <p>Active cases</p>
-        <p><?php echo $today_data[2]; ?></p>
-        <span><?php if((int)$today_data[2]-(int)$cases_ytd < 0){
-                    echo '-';
-                }elseif((int)$today_data[2]-(int)$cases_ytd > 0){
-                    echo '+';
-                } echo (int)$today_data[2]-(int)$cases_ytd; ?></span>
+        <p><?php echo $data_tdy[2]; ?></p>
+        <span>
+<?php 
+            if((int)$data_tdy[2]-(int)$active_ytd < 0){
+                echo '-';
+            }elseif((int)$data_tdy[2]-(int)$active_ytd > 0){
+                echo '+';
+            } 
+            echo (int)$data_tdy[2]-(int)$active_ytd; 
+?>
+        </span>
     </div>
     <div>
         <b>Recovered</b>
-        <p><?php echo $today_data[3]; ?></p>
+        <p><?php echo $data_tdy[3]; ?></p>
     </div>
 
     <div>
         <b>Deaths</b>
-        <p><?php echo $today_data[4]; ?></p>
+        <p><?php echo $data_tdy[4]; ?></p>
     </div>
 
     <div>
         <b>Vaccinations</b>
-        <p><?php echo $today_data[5]; ?></p>
+        <p><?php echo $data_tdy[5]; ?></p>
     </div>
 
 <?php 
     if($state==''){
 ?>
-        <table id='staterecords'>
+        <table id='states_table'>
             <thead>
                 <tr>
                     <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccination</th>
@@ -51,43 +57,43 @@
             </thead>
             <tbody>
 <?php
-        foreach($today_state_data as $state_record){
+        foreach($data_tdy_states as $data_tdy_state){
 ?>
             <tr>
-                <td><?php echo $state_record[0]; ?></td>
-                <td><?php echo $state_record[1]; ?></td>
-                <td><?php echo (int)$state_record[1]-(int)$state_record[2]; ?></td>
-                <td><?php echo $state_record[2]; ?></td>
-                <td><?php echo $state_record[3]; ?></td>
-                <td><?php echo $state_record[4]; ?></td>
-                <td><?php echo $state_record[5]; ?></td>
-                <td><?php echo $state_record[6]; ?></td>
+                <td><?php echo $data_tdy_state[0]; ?></td>
+                <td><?php echo $data_tdy_state[1]; ?></td>
+                <td><?php echo (int)$data_tdy_state[1]-(int)$data_tdy_state[2]; ?></td>
+                <td><?php echo $data_tdy_state[2]; ?></td>
+                <td><?php echo $data_tdy_state[3]; ?></td>
+                <td><?php echo $data_tdy_state[4]; ?></td>
+                <td><?php echo $data_tdy_state[5]; ?></td>
+                <td><?php echo $data_tdy_state[6]; ?></td>
             </tr>
 <?php
         }
 ?>          </tbody>
-            <tr class='sumrecord'>
+            <tr class='states_table_last'>
                 <td></td>
-                <td><?php echo $today_data[0]; ?></td>
-                <td><?php echo (int)$today_data[0]-(int)$today_data[1]; ?></td>
-                <td><?php echo $today_data[1]; ?></td>
-                <td><?php echo $today_data[2]; ?></td>
-                <td><?php echo $today_data[3]; ?></td>
-                <td><?php echo $today_data[4]; ?></td>
-                <td><?php echo $today_data[5]; ?></td>
+                <td><?php echo $data_tdy[0]; ?></td>
+                <td><?php echo (int)$data_tdy[0]-(int)$data_tdy[1]; ?></td>
+                <td><?php echo $data_tdy[1]; ?></td>
+                <td><?php echo $data_tdy[2]; ?></td>
+                <td><?php echo $data_tdy[3]; ?></td>
+                <td><?php echo $data_tdy[4]; ?></td>
+                <td><?php echo $data_tdy[5]; ?></td>
             </tr>
         </table>
 <?php
     }
 ?>  
-    <form id=dateselector onsubmit="return false;">
-        <input type="date" id='startdate'>
-        <input type="date" id='enddate'>
-        <input type="submit" value="Filter" id='filter'>
+    <form onsubmit="return false;">
+        <input type="date" id='start_date'>
+        <input type="date" id='end_date'>
+        <input type="submit" value="Filter" id='submit_filter'>
         
     </form>
-    <span id='filtermessage'>Please select a valid range</span>
-    <div id="trendgraph"></div>
+    <span id='filter_message'>Please select a valid range</span>
+    <div id="trend_graph"></div>
 
 <?php
     include('footer.php'); 

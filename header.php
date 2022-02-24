@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <title>MY COVID Stats</title>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
         <script src="script.js"></script>
+
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
         <header>
             <nav>
-                <div><a href='index.php'>COVID-19</a></div>
+                <div><a href='index.php'>MY COVID Stats</a></div>
                 <div>
-                    <form method="GET" id='statedropdown'>
-                        <select name="selectedstate" id='statedropdownselect'>
+                    <form method="GET" id='state_form'>
+                        <select name="state_select" id='state_form_dropdown'>
                             <option value=''>---</option>
                             <option value="Johor">Johor</option>
                             <option value="Kedah">Kedah</option>
