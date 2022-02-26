@@ -55,7 +55,7 @@ function drawChart() {
         legend: { position: 'right' },
         focusTarget: 'category',
         height: jQuery(window).height(),
-        //width: jQuery(window).width()*0.98,
+        width: jQuery(window).width()*0.98,
         vAxis: { title: 'Number', viewWindow: { min:0 } },
         hAxis: { title: 'Date' },
         backgroundColor: 'white'
@@ -112,7 +112,7 @@ jQuery(document).ready(function() {
     });
 
     //if state is selected, keep it selected in dropdown
-    var state = document.getElementById('state_name').title;
+    var state = document.getElementById('state_div').title;
     jQuery.each(jQuery('#state_form_dropdown option'), function(i, val){
         if(val.value == state){
             jQuery(val).attr('selected','selected');

@@ -1,6 +1,135 @@
+
+
+body{
+    background-color: #4a4a4a;
+    color: white;
+}
 #filter_message{
     display: none;
 }
 .states_table_last{
     font-weight: bold;
+}
+
+.center_div{
+    text-align: center;
+}
+
+/* #date_div{
+    font-size: xx-large;
+} */
+#state_div{
+    margin: auto;
+    margin-top: 20px;
+}
+#refresh_div{
+    margin-bottom: 20px;
+}
+
+.nav-item{
+    margin: auto;
+    padding: 0 20px;
+}
+
+.nav{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nav_left{
+    margin-left: 0;
+}
+
+#nav_right{
+    margin-right: 0;
+}
+
+#nav_right span, #nav_right form{
+    display: inline;
+}
+nav{
+    /* background-color: rgb(197, 197, 83); */
+    border-bottom: 1px white solid;
+    /* color: black; */
+}
+nav a{
+    color: white;
+}
+.msiamap path:hover{
+    fill: blue;
+}
+body{
+    color: aliceblue;
+    background-image: url("../content/Johor.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    overflow: visible;
+
+}
+.today_div{
+    background-image: linear-gradient(rgb(255, 255, 255, 0.1), rgb(255, 255, 255, 0));
+    margin: 0;
+}
+
+.today_data{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.today_data_card{
+    border: 1px solid white;
+    margin: 3px 3px 10px 3px;
+    text-align: center;
+    padding: 0;
+    padding: 10px 0;
+}
+
+#today_data_card_cases{
+    background-color: rgb(197, 197, 83, 0.8);
+    color: #272727;
+}
+.today_data_card_cases_sub{
+    display: inline-block;
+    
+}
+.today_data_card_cases_sub p{
+    font-size: medium;
+}
+.today_data_card_cases_active{
+    margin-top: 20px;
+}
+#today_data_card_recovs{
+    background-color: green;
+}
+
+#today_data_card_deaths{
+    background-color: rgb(133, 65, 65);
+}
+#today_data_card_vacs{
+    background-color: rgb(117, 162, 199);
+}
+
+h2{
+    font-size: x-large;
+}
+h3{
+    font-size: large;
+}
+h4{
+    font-size: small;
+}
+#today_data_card_cases h2{
+    font-size: large;
+}
+#today_data_card_cases h3{
+    font-size: x-large;
+}
+.today_data p{
+    font-size: large;
+    margin: 0;
+}
+
+#refresh_div{
+    font-size: small;
 }
