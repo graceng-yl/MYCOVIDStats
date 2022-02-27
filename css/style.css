@@ -1,8 +1,14 @@
 
 
 body{
-    background-color: #4a4a4a;
-    color: white;
+    background-color: #363633;
+    color: rgb(228, 243, 255);
+    background-image: url("../content/Johor.png");
+    /* background: url("../content/Johor.png"), linear-gradient(top, rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0)); */
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
+    
 }
 #filter_message{
     display: none;
@@ -20,7 +26,7 @@ body{
 } */
 #state_div{
     margin: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 }
 #refresh_div{
     margin-bottom: 20px;
@@ -34,6 +40,15 @@ body{
 .nav{
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
+    padding: 8px;
+    /* background-color: rgba(228, 228, 228, 0.6);
+    box-shadow: 0 8px 32px 0 rgba(65, 65, 65, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); */
+    /* position: fixed; */
 }
 
 #nav_left{
@@ -48,34 +63,45 @@ body{
     display: inline;
 }
 nav{
-    /* background-color: rgb(197, 197, 83); */
-    border-bottom: 1px white solid;
-    /* color: black; */
+    
+    /* border-bottom: 1px white solid; */
+    color: rgb(255, 255, 255);
+    
 }
 nav a{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 .msiamap path:hover{
     fill: blue;
 }
-body{
-    color: aliceblue;
-    background-image: url("../content/Johor.png");
+.today_div{
+    /* color: aliceblue; */
+    /* background-color: #4a4a4a; */
+    /* background-image: url("../content/Johor.png");
     background-repeat: no-repeat;
     background-position: top;
-    background-size: contain;
-    overflow: visible;
+    background-size: cover; */
+    /* overflow: visible; */
+    
 
 }
-.today_div{
-    background-image: linear-gradient(rgb(255, 255, 255, 0.1), rgb(255, 255, 255, 0));
-    margin: 0;
+.today_date{
+    /* background-image: linear-gradient(rgb(255, 255, 255, 0.1), rgb(255, 255, 255, 0));
+    margin: 0; */
+    /* background-color: #767676; */
+    width: 30%;
+    /* box-shadow: 0 8px 32px 0 rgba(65, 65, 65, 0.37); */
+    /* backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px ); */
+    /* border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 .today_data{
     width: 40%;
     margin-left: auto;
     margin-right: auto;
+    
 }
 .today_data_card{
     border: 1px solid white;
@@ -83,12 +109,19 @@ body{
     text-align: center;
     padding: 0;
     padding: 10px 0;
+    box-shadow: 0 8px 32px 0 rgba(65, 65, 65, 0.37);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #272727;
+    background-color: rgba(199, 200, 206, 0.8);
 }
 
-#today_data_card_cases{
-    background-color: rgb(197, 197, 83, 0.8);
+/* #today_data_card_cases{
+    background-color: rgba(235, 235, 235, 0.6);
     color: #272727;
-}
+} */
 .today_data_card_cases_sub{
     display: inline-block;
     
@@ -99,16 +132,16 @@ body{
 .today_data_card_cases_active{
     margin-top: 20px;
 }
-#today_data_card_recovs{
-    background-color: green;
+/* #today_data_card_recovs{
+    background-color: rgba(219, 219, 219, 0.6);
 }
 
 #today_data_card_deaths{
-    background-color: rgb(133, 65, 65);
+    background-color: rgba(223, 223, 223, 0.6);
 }
 #today_data_card_vacs{
-    background-color: rgb(117, 162, 199);
-}
+    background-color: rgba(230, 230, 230, 0.6);
+} */
 
 h2{
     font-size: x-large;

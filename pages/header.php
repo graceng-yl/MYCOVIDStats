@@ -24,7 +24,7 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg sticky-top">
                 <ul class="nav container">
                     <li class="nav-item" id="nav_left">
                         <a class="navbar-brand" href='index.php'>MY COVID Stats</a>

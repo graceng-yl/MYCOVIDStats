@@ -12,7 +12,7 @@
         var date_min=<?php echo json_encode($date_min); ?>;
     </script>
     <div class="today_div">
-        <div class="container">
+        <div class="container today_date">
             <p class="center_div" id="state_div" title='<?php echo $state; ?>'>
 <?php 
                 if ($state==''){
@@ -51,9 +51,7 @@
                         <p><span><?php echo $data_tdy[2]; ?></span>
                         <span>
 <?php 
-                            if((int)$data_tdy[2]-(int)$active_ytd < 0){
-                                echo '-';
-                            }elseif((int)$data_tdy[2]-(int)$active_ytd > 0){
+                            if((int)$data_tdy[2]-(int)$active_ytd > 0){
                                 echo '+';
                             } 
                             echo (int)$data_tdy[2]-(int)$active_ytd; 
