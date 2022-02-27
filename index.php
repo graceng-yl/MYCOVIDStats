@@ -11,9 +11,10 @@
         var date_tdy=<?php echo json_encode($date_tdy); ?>;
         var date_min=<?php echo json_encode($date_min); ?>;
     </script>
-    <div class="today_div">
-        <div class="container today_date">
-            <p class="center_div" id="state_div" title='<?php echo $state; ?>'>
+
+    <section class="top_section">
+        <div class="container top_section_top">
+            <p class="centered_divs" id="state_div" title='<?php echo $state; ?>'>
 <?php 
                 if ($state==''){
                     echo 'MY Covid Stats';
@@ -22,33 +23,33 @@
                 }
 ?>
             </p>
-            <h1 class="center_div" id="date_div">
+            <h1 class="centered_divs" id="date_div">
                 <?php echo date("d F Y", strtotime("-1 days")); ?>
             </h1>
-            <p class="center_div" id="refresh_div">
+            <p class="centered_divs" id="refresh_div">
                 Last updated: <?php echo date("d F Y, g:i a"); ?> (UTC+8)
             </p>
         </div>
 
-        <div class="container today_data">
+        <div class="container top_section_bottom">
             <div class="row">
-                <div class="col-sm today_data_card" id="today_data_card_cases">
-                    <div>
+                <div class="col-sm data_card">
+                    <div class="" id="data_card_cases">
                         <h2>Cases</h2>
                         <h3>New cases</h3>
-                        <p><?php echo $data_tdy[0]; ?></p>
+                        <p class="number_counter"><?php echo $data_tdy[0]; ?></p>
                         <div>
-                            <div class="today_data_card_cases_sub">
+                            <div class="data_card_cases_sub">
                                 <h4>(Local)</h4>
                                 <p><?php echo (int)$data_tdy[0] - (int)$data_tdy[1]; ?></p>
                             </div>
-                            <div class="today_data_card_cases_sub">
-                                <h4 class="today_data_card_cases_sub">(Imported)</h4>
+                            <div class="data_card_cases_sub">
+                                <h4>(Imported)</h4>
                                 <p><?php echo $data_tdy[1]; ?></p>
                             </div>
                         </div>
-                        <h3 class="today_data_card_cases_active">Active cases</h3>
-                        <p><span><?php echo $data_tdy[2]; ?></span>
+                        <h3 class="data_card_cases_active">Active cases</h3>
+                        <p><span class="number_counter"><?php echo $data_tdy[2]; ?></span>
                         <span>
 <?php 
                             if((int)$data_tdy[2]-(int)$active_ytd > 0){
@@ -61,25 +62,30 @@
                 </div>
 
                 <div class="col-sm">
-                    <div class="today_data_card" id="today_data_card_recovs">
-                        <h2>Recovered</h2>
-                        <p><?php echo $data_tdy[3]; ?></p>
+                    <div class="row">
+                        <div class="col-sm data_card" id="data_card_recovs">
+                            <h2>Recovered</h2>
+                            <p class="number_counter"><?php echo $data_tdy[3]; ?></p>
+                        </div>
                     </div>
-
-                    <div class="today_data_card" id="today_data_card_deaths">
-                        <h2>Deaths</h2>
-                        <p><?php echo $data_tdy[4]; ?></p>
+                    
+                    <div class="row">
+                        <div class="col-sm data_card" id="data_card_deaths">
+                            <h2>Deaths</h2>
+                            <p class="number_counter"><?php echo $data_tdy[4]; ?></p>
+                        </div>
                     </div>
-
-                    <div class="today_data_card" id="today_data_card_vacs">
-                        <h2>Vaccinations</h2>
-                        <p><?php echo $data_tdy[5]; ?></p>
+                    
+                    <div class="row">
+                        <div class="col-sm data_card" id="data_card_vacs">
+                            <h2>Vaccinations</h2>
+                            <p class="number_counter"><?php echo $data_tdy[5]; ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-                        </div>
+    </section>
 
 <?php 
     if($state==''){

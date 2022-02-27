@@ -1,42 +1,51 @@
+:root{
+    --c_fontwhite: rgb(255, 255, 255); 
+    --c_fontblack: rgb(39, 39, 39);
+    --c_bggrey: rgb(54, 54, 51);
+    --c_fglightblue: rgba(237, 239, 243, 0.6);
+    --c_fglightbluesolid: rgba(237, 239, 243);
+    --c_borderwhite: rgb(255, 255, 255, 0.3); 
+    --c_shadowgrey: rgba(36, 36, 36, 0.5);
 
+    --font_xxlarge: 40px;
+    --font_xlarge: 26px;
+    --font_large: 22px;
+    --font_medium: 18px;
+    --font_small: 14px;
+    --font_xsmall: 10px;
+    --font_xxsmall: 6px;
 
+    --font: Helvetica, Arial, sans-serif;
+}
+
+/* whole page */
 body{
-    background-color: #363633;
-    color: rgb(228, 243, 255);
+    background-color: var(--c_bggrey);
+    color: var(--c_fontwhite);
     background-image: url("../content/Johor.png");
-    /* background: url("../content/Johor.png"), linear-gradient(top, rgb(255, 255, 255, 0.5), rgb(255, 255, 255, 0)); */
     background-repeat: no-repeat;
     background-position: top;
     background-size: contain;
-    
+    font-family: var(--font);
 }
-#filter_message{
-    display: none;
+h1{
+    font-size: var(--font_xxlarge);
 }
-.states_table_last{
-    font-weight: bold;
+h2{
+    font-size: var(--font_large);
 }
-
-.center_div{
-    text-align: center;
+h3{
+    font-size: var(--font_medium);
 }
-
-/* #date_div{
-    font-size: xx-large;
-} */
-#state_div{
-    margin: auto;
-    padding-top: 20px;
-}
-#refresh_div{
-    margin-bottom: 20px;
+h4{
+    font-size: var(--font_small);
 }
 
+/* header nav bar */
 .nav-item{
     margin: auto;
     padding: 0 20px;
 }
-
 .nav{
     margin-left: auto;
     margin-right: auto;
@@ -50,119 +59,86 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.2); */
     /* position: fixed; */
 }
-
+nav a{
+    color: var(--c_fontwhite);
+}
 #nav_left{
     margin-left: 0;
 }
-
 #nav_right{
     margin-right: 0;
 }
-
 #nav_right span, #nav_right form{
     display: inline;
 }
-nav{
-    
-    /* border-bottom: 1px white solid; */
-    color: rgb(255, 255, 255);
-    
-}
-nav a{
-    color: rgb(255, 255, 255);
-}
-.msiamap path:hover{
-    fill: blue;
-}
-.today_div{
-    /* color: aliceblue; */
-    /* background-color: #4a4a4a; */
-    /* background-image: url("../content/Johor.png");
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover; */
-    /* overflow: visible; */
-    
-
-}
-.today_date{
-    /* background-image: linear-gradient(rgb(255, 255, 255, 0.1), rgb(255, 255, 255, 0));
-    margin: 0; */
-    /* background-color: #767676; */
-    width: 30%;
-    /* box-shadow: 0 8px 32px 0 rgba(65, 65, 65, 0.37); */
-    /* backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px ); */
-    /* border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2); */
+#state_form_dropdown{
+    background-color: var(--c_fglightblue);
+    box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 5px;
+    border: 1px solid var(--c_borderwhite);
+    padding: 5px 10px;
+    outline: 0;
 }
 
-.today_data{
+/* top section */
+.top_section{
+    margin-bottom: 50px;
+}
+.centered_divs{
+    text-align: center;
+}
+#state_div{
+    margin: auto;
+    padding-top: 20px;
+}
+#refresh_div{
+    margin-bottom: 20px;
+    font-size: var(--font_small);
+}
+.top_section_bottom{
     width: 40%;
     margin-left: auto;
     margin-right: auto;
-    
 }
-.today_data_card{
-    border: 1px solid white;
-    margin: 3px 3px 10px 3px;
+.data_card{
+    margin: 6px 10px;
     text-align: center;
-    padding: 0;
     padding: 10px 0;
-    box-shadow: 0 8px 32px 0 rgba(65, 65, 65, 0.37);
+    box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #272727;
-    background-color: rgba(199, 200, 206, 0.8);
+    border: 1px solid var(--c_borderwhite);
+    color: var(--c_fontblack);
+    background-color: var(--c_fglightblue);
 }
-
-/* #today_data_card_cases{
-    background-color: rgba(235, 235, 235, 0.6);
-    color: #272727;
-} */
-.today_data_card_cases_sub{
-    display: inline-block;
-    
-}
-.today_data_card_cases_sub p{
-    font-size: medium;
-}
-.today_data_card_cases_active{
-    margin-top: 20px;
-}
-/* #today_data_card_recovs{
-    background-color: rgba(219, 219, 219, 0.6);
-}
-
-#today_data_card_deaths{
-    background-color: rgba(223, 223, 223, 0.6);
-}
-#today_data_card_vacs{
-    background-color: rgba(230, 230, 230, 0.6);
-} */
-
-h2{
-    font-size: x-large;
-}
-h3{
-    font-size: large;
-}
-h4{
-    font-size: small;
-}
-#today_data_card_cases h2{
-    font-size: large;
-}
-#today_data_card_cases h3{
-    font-size: x-large;
-}
-.today_data p{
-    font-size: large;
+.top_section_bottom p{
+    font-size: var(--font_large);
     margin: 0;
 }
+.data_card_cases_sub{
+    display: inline-block;
+}
+.data_card_cases_sub p{
+    font-size: var(--font_small);
+}
+.data_card_cases_active{
+    margin-top: 20px;
+}
+#data_card_cases h2{
+    font-size: var(--font_medium);
+}
+#data_card_cases h3{
+    font-size: var(--font_large);
+}
 
-#refresh_div{
-    font-size: small;
+
+
+#filter_message{
+    display: none;
+}
+.states_table_last{
+    font-weight: bold;
 }

@@ -113,11 +113,13 @@ jQuery(document).ready(function() {
 
     //if state is selected, keep it selected in dropdown
     var state = document.getElementById('state_div').title;
+    //var state = jQuery('.ui-selectmenu-text').text()
     jQuery.each(jQuery('#state_form_dropdown option'), function(i, val){
         if(val.value == state){
             jQuery(val).attr('selected','selected');
         }
     });
+    
 
     //restrict input date range in trend graph
     jQuery('#start_date').attr('min', date_min);
@@ -157,4 +159,18 @@ jQuery(document).ready(function() {
         "info": false
         //no paging, searching, and info
     });
+
+    jQuery('.number_counter').each(function () {
+        jQuery(this).prop('Counter',0).animate({
+            Counter: jQuery(this).text()
+        }, {
+            duration: 2000,
+            easing: 'swing',
+            step: function (now) {
+                jQuery(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+    //jQuery('#state_form_dropdown').selectmenu();
 });
