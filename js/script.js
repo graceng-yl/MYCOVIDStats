@@ -52,11 +52,11 @@ function drawChart() {
     
     var options = {
         title: '',
-        legend: { position: 'right' },
+        legend: { position: 'bottom' },
         focusTarget: 'category',
         height: jQuery(window).height()*0.9,
         width: jQuery(window).width()*0.9,
-        chartArea: {'width': '65%', 'height': '80%'},
+        chartArea: {'width': '70%', 'height': '80%'},
         hAxis:{gridlines: {color: 'transparent', minSpacing: 20}, format: 'd/M/yy'},
         vAxis:{gridlines: {color: 'transparent', minSpacing: 50}},
         // vAxis: { title: 'Number', viewWindow: { min:0 } },
@@ -117,7 +117,9 @@ jQuery(window).on('load', function(){
     jQuery('.preloader').fadeOut('slow');
     jQuery('body').attr('id','');
 });
-
+jQuery(window).resize(function(){
+    drawChart();
+});
 jQuery(document).ready(function() {
     jQuery('#filter_message').hide();
 

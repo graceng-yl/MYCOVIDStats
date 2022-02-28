@@ -280,7 +280,7 @@ a:hover{
     color: var(--c_fontwhite);
 }
 #trend_graph > div > div{
-    margin-left: -5%;
+    /* margin-left: -5%; */
     margin-top: 2%;
     margin-bottom: 3%;
 }
@@ -318,7 +318,9 @@ a:hover{
     stroke-opacity: 0.5;
     stroke-width: 1px;
 }
-
+.goog-tooltip div{
+    color: var(--c_fontblack);
+}
 /* footer */
 footer{
     text-align: center;
