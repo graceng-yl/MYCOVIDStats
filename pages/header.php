@@ -25,7 +25,10 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
 
-    <body>
+    <body id="stop-scrolling">
+        <div class="preloader">
+            Just taking a few seconds for statistics update :D
+        </div>
         <header>
             <nav class="navbar navbar-expand-lg sticky-top">
                 <ul class="nav container">

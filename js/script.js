@@ -113,10 +113,14 @@ function drawChart() {
     });
 }
 
+jQuery(window).on('load', function(){
+    jQuery('.preloader').fadeOut('slow');
+    jQuery('body').attr('id','');
+});
 
 jQuery(document).ready(function() {
     jQuery('#filter_message').hide();
-    
+
     //reload page when state dropdown is chosen
 	document.getElementById('state_form').addEventListener("change", function(){
         document.getElementById('state_form').submit();
