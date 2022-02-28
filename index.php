@@ -12,7 +12,7 @@
         var date_min=<?php echo json_encode($date_min); ?>;
     </script>
 
-    <section class="top_section">
+    <section class="container top_section">
         <div class="container top_section_top">
             <p class="centered_divs" id="state_div" title='<?php echo $state; ?>'>
 <?php 
@@ -90,15 +90,14 @@
 <?php 
     if($state==''){
 ?>
-        <hr>
-        <section class="container">
-        <table id='states_table'>
-            <thead>
-                <tr>
-                    <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccination</th>
-                </tr>
-            </thead>
-            <tbody>
+        <section class="container middle_section">
+            <table id='states_table'>
+                <thead>
+                    <tr>
+                        <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccinations</th>
+                    </tr>
+                </thead>
+                <tbody>
 <?php
                 foreach($data_tdy_states as $data_tdy_state){
 ?>
@@ -114,25 +113,25 @@
                     </tr>
 <?php
                 }
-?>          </tbody>
+?>              </tbody>
 
-            <tr class='states_table_last'>
-                <td></td>
-                <td><?php echo $data_tdy[0]; ?></td>
-                <td><?php echo (int)$data_tdy[0]-(int)$data_tdy[1]; ?></td>
-                <td><?php echo $data_tdy[1]; ?></td>
-                <td><?php echo $data_tdy[2]; ?></td>
-                <td><?php echo $data_tdy[3]; ?></td>
-                <td><?php echo $data_tdy[4]; ?></td>
-                <td><?php echo $data_tdy[5]; ?></td>
-            </tr>
-        </table>
+                <tr class='states_table_last'>
+                    <td></td>
+                    <td><?php echo $data_tdy[0]; ?></td>
+                    <td><?php echo (int)$data_tdy[0]-(int)$data_tdy[1]; ?></td>
+                    <td><?php echo $data_tdy[1]; ?></td>
+                    <td><?php echo $data_tdy[2]; ?></td>
+                    <td><?php echo $data_tdy[3]; ?></td>
+                    <td><?php echo $data_tdy[4]; ?></td>
+                    <td><?php echo $data_tdy[5]; ?></td>
+                </tr>
+            </table>
         </section>
 <?php
     }
 ?>  
-    <hr>
-    <section class="container">
+
+    <section class="container bottom_section">
         <form onsubmit="return false;">
             <input type="date" id='start_date'>
             <input type="date" id='end_date'>

@@ -3,7 +3,7 @@
     --c_fontblack: rgb(39, 39, 39);
     --c_bggrey: rgb(54, 54, 51);
     --c_fglightblue: rgba(237, 239, 243, 0.6);
-    --c_fglightbluesolid: rgba(237, 239, 243);
+    --c_fgdarkblue: rgb(93, 121, 163, 0.8);
     --c_borderwhite: rgb(255, 255, 255, 0.3); 
     --c_shadowgrey: rgba(36, 36, 36, 0.5);
 
@@ -82,9 +82,12 @@ nav a{
     outline: 0;
 }
 
+
 /* top section */
 .top_section{
+    padding-bottom: 50px;
     margin-bottom: 50px;
+    border-bottom: var(--c_borderwhite) 1px solid;
 }
 .centered_divs{
     text-align: center;
@@ -98,7 +101,7 @@ nav a{
     font-size: var(--font_small);
 }
 .top_section_bottom{
-    width: 40%;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -134,11 +137,71 @@ nav a{
     font-size: var(--font_large);
 }
 
-
-
-#filter_message{
-    display: none;
+/* state table / middle section*/
+#states_table{
+    font-size: var(--font_small);
+    color: var(--c_fontblack);
+    border-bottom: none;
+}
+#states_table tr{
+    background-color: rgb(255, 255, 255, 0);
+}
+#states_table th, #states_table td{
+    border-bottom: none;
+    background-color: var(--c_fglightblue);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    padding: 5px 0;
+    text-align: center;
+    border: 1px solid rgb(255, 255, 255, 0.1);
+}
+#states_table th{
+    color: var(--c_fontwhite);
+    font-weight: normal;
+    font-size: var(--font_small);
+    background-color: var(--c_fgdarkblue);
+    border: 1px solid rgb(255, 255, 255, 0.3);
 }
 .states_table_last{
     font-weight: bold;
+}
+#states_table tr td:first-child{
+    background-color: rgb(93, 121, 163, 0.5);
+    font-size: var(--font_small);
+    color: var(--c_fontwhite);
+}
+#states_table tr:first-child th:first-child{
+    border-top-left-radius: 20px;
+}
+#states_table tr:first-child th:last-child{
+    border-top-right-radius: 20px;
+}
+#states_table .states_table_last td:first-child{
+    border-bottom-left-radius: 20px;
+}
+#states_table .states_table_last td:last-child{
+    border-bottom-right-radius: 20px;
+}
+#states_table tr:hover td{
+    background-color: rgba(237, 239, 243, 0.5);
+}
+#states_table tr:hover td:first-child{
+    background-color: rgb(93, 121, 163, 0.3);
+}
+#states_table th:hover{
+    background-color: rgb(93, 121, 163, 0.7);
+}
+
+
+/* Bottom section */
+.bottom_section{
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: var(--c_borderwhite) 1px solid;
+}
+#trend_graph svg > rect{
+    fill: none;
+}
+#filter_message{
+    display: none;
 }
