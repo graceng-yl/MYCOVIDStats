@@ -10,6 +10,7 @@
 ?>
         </title>
         <meta name="description" content="View the latest Malaysia COVID-19 statistics by states">
+        <link rel="icon" href="content/icon.png">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://www.gstatic.com/charts/loader.js"></script>

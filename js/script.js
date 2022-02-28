@@ -57,11 +57,18 @@ function drawChart() {
         height: jQuery(window).height()*0.9,
         width: jQuery(window).width()*0.9,
         chartArea: {'width': '65%', 'height': '80%'},
-        hAxis:{gridlines: {color: 'transparent', minSpacing: 20}},
+        hAxis:{gridlines: {color: 'transparent', minSpacing: 20}, format: 'd/M/yy'},
         vAxis:{gridlines: {color: 'transparent', minSpacing: 50}},
         // vAxis: { title: 'Number', viewWindow: { min:0 } },
         // hAxis: { title: 'Date' },
-        backgroundColor: 'white'
+        // backgroundColor: 'white'
+        series: {
+            0: { color: '#f1ca3a' },
+            1: { color: '#e7711b' },
+            2: { color: '#6f9654' },
+            3: { color: '#e2431e' },
+            4: { color: '#1c91c0' },
+          }
     };
     var chart = new google.visualization.LineChart(document.getElementById('trend_graph'));
     chart.draw(data, options);
@@ -108,7 +115,8 @@ function drawChart() {
 
 
 jQuery(document).ready(function() {
-
+    jQuery('#filter_message').hide();
+    
     //reload page when state dropdown is chosen
 	document.getElementById('state_form').addEventListener("change", function(){
         document.getElementById('state_form').submit();

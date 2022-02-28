@@ -43,6 +43,7 @@ h4{
 }
 a{
     color: var(--c_fontwhite);
+    text-decoration: none;
 }
 a:hover{
     color: var(--c_fontblue);
@@ -84,6 +85,7 @@ a:hover{
     border: 1px solid var(--c_borderwhite);
     padding: 5px 10px;
     outline: 0;
+    cursor: pointer;
 }
 
 
@@ -140,12 +142,28 @@ a:hover{
 #data_card_cases h3{
     font-size: var(--font_large);
 }
+#active_diff{
+    font-size: var(--font_small);
+}
+#update_div{
+    margin-top: 20px;
+    text-align: center;
+    font-size: var(--font_small);
+}
 
-/* state table / middle section*/
+/* middle section*/
+.middle_section_top{
+    text-align: center;
+}
+.middle_section_top p{
+    margin-bottom: 30px;
+}
 #states_table{
     font-size: var(--font_small);
     color: var(--c_fontblack);
     border-bottom: none;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
 }
 #states_table tr{
     background-color: rgb(255, 255, 255, 0);
@@ -153,8 +171,7 @@ a:hover{
 #states_table th, #states_table td{
     border-bottom: none;
     background-color: var(--c_fglightblue);
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
+    
     padding: 5px 0;
     text-align: center;
     border: 1px solid rgb(255, 255, 255, 0.1);
@@ -195,16 +212,34 @@ a:hover{
 #states_table th:hover{
     background-color: rgb(93, 121, 163, 0.7);
 }
-
-
-/* Bottom section */
 .middle_section{
     margin-bottom: 50px;
     padding-bottom: 50px;
     border-bottom: var(--c_borderwhite) 1px solid;
 }
+
+/* Bottom section */
+.bottom_section_top{
+    text-align: center;
+}
+.bottom_section_top p{
+    margin-bottom: 30px;
+}
+.bottom_section_bottom p{
+    margin-bottom: 10px;
+}
+#trend_graph_info{
+    text-align: right;
+    margin-top: 10px;
+    font-size: var(--font_small);
+}
+#filter_form{
+    display: inline;
+}
 #filter_message{
-    display: none;
+    display: inline;
+    margin-left: 10px;
+    color:rgb(228, 107, 107);
 }
 .input_date{
     background-color: var(--c_fglightblue);
@@ -217,6 +252,7 @@ a:hover{
     outline: 0;
     margin-right: 5px;
     width: 15%;
+    cursor: pointer;
 }
 .input_submit{
     background-color: var(--c_fgdarkblue);
@@ -229,12 +265,9 @@ a:hover{
     outline: 0;
     color: var(--c_fontwhite);
 }
-#trend_graph{
-    margin-top: 3%;
-}
 #trend_graph > div > div{
     margin-left: -5%;
-
+    margin-top: 2%;
     margin-bottom: 3%;
 }
 #trend_graph > div{
@@ -254,18 +287,31 @@ a:hover{
     fill: var(--c_fontwhite);
     font-style: normal;
 }
+/* #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g rect{
+    height: 50px;
+} */
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g:hover{
+    cursor: pointer;
+}
 #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g.google-visualization-tooltip > g > text{
     fill: var(--c_fontblack);
 }
 #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g > path{
     fill: var(--c_fglightblue);
 }
-
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(4) > rect{
+    stroke: var(--c_fgdarkblue);
+    stroke-opacity: 0.5;
+    stroke-width: 1px;
+}
 
 /* footer */
 footer{
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin-top: 70px;
+    margin-bottom: 30px;
     font-size: var(--font_small);
+}
+footer p{
+    margin-bottom: 5px;
 }

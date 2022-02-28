@@ -17,9 +17,9 @@
             <p class="centered_divs" id="state_div" title='<?php echo $state; ?>'>
 <?php 
                 if ($state==''){
-                    echo 'MY Covid Stats';
+                    echo 'MY COVID Stats';
                 } else{ 
-                    echo 'MY <b>'.$state.'</b> Covid Stats'; 
+                    echo 'MY <b>'.$state.'</b> COVID Stats'; 
                 }
 ?>
             </p>
@@ -27,7 +27,7 @@
                 <?php echo date("d F Y", strtotime("-1 days")); ?>
             </h1>
             <p class="centered_divs" id="refresh_div">
-                Last updated: <?php echo date("d F Y, g:i a"); ?> (UTC+8)
+                Last refreshed: <?php echo date("d F Y, g:i a"); ?> (UTC+8)
             </p>
         </div>
 
@@ -50,7 +50,7 @@
                         </div>
                         <h3 class="data_card_cases_active">Active cases</h3>
                         <p><span class="number_counter"><?php echo $data_tdy[2]; ?></span>
-                        <span>
+                        <span id="active_diff">
 <?php 
                             if((int)$data_tdy[2]-(int)$active_ytd > 0){
                                 echo '+';
@@ -84,6 +84,7 @@
                     </div>
                 </div>
             </div>
+            <p id="update_div">*Data updated daily by the next day</p>
         </div>
     </section>
 
@@ -91,54 +92,75 @@
     if($state==''){
 ?>
         <section class="container middle_section">
-            <table id='states_table'>
-                <thead>
-                    <tr>
-                        <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccinations</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="middle_section_top">
+                <h1>Latest Stats By States</h1>
+                <p>Summary of latest data by states</p>
+            </div>
+            <div class="middle_section_bottom">
+                <table id='states_table'>
+                    <thead>
+                        <tr>
+                            <th>State</th><th>New Cases</th><th>Local Cases</th><th>Import Cases</th><th>Active Cases</th><th>Recovered Cases</th><th>Deaths</th><th>Vaccinations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 <?php
-                foreach($data_tdy_states as $data_tdy_state){
+                    foreach($data_tdy_states as $data_tdy_state){
 ?>
-                    <tr>
-                        <td><?php echo $data_tdy_state[0]; ?></td>
-                        <td><?php echo $data_tdy_state[1]; ?></td>
-                        <td><?php echo (int)$data_tdy_state[1]-(int)$data_tdy_state[2]; ?></td>
-                        <td><?php echo $data_tdy_state[2]; ?></td>
-                        <td><?php echo $data_tdy_state[3]; ?></td>
-                        <td><?php echo $data_tdy_state[4]; ?></td>
-                        <td><?php echo $data_tdy_state[5]; ?></td>
-                        <td><?php echo $data_tdy_state[6]; ?></td>
-                    </tr>
+                        <tr>
+                            <td><a href="<?php 
+                            if (strpos($_SERVER['REQUEST_URI'], '?state_select=') == '')
+                                echo $_SERVER['REQUEST_URI'].'?state_select='.str_replace(" ","+",$data_tdy_state[0]);
+                            else 
+                                echo $_SERVER['REQUEST_URI'].str_replace(" ","+",$data_tdy_state[0]); ?>">
+                                <?php echo $data_tdy_state[0]; ?>
+                                </a></td>
+                            <td><?php echo $data_tdy_state[1]; ?></td>
+                            <td><?php echo (int)$data_tdy_state[1]-(int)$data_tdy_state[2]; ?></td>
+                            <td><?php echo $data_tdy_state[2]; ?></td>
+                            <td><?php echo $data_tdy_state[3]; ?></td>
+                            <td><?php echo $data_tdy_state[4]; ?></td>
+                            <td><?php echo $data_tdy_state[5]; ?></td>
+                            <td><?php echo $data_tdy_state[6]; ?></td>
+                        </tr>
 <?php
-                }
-?>              </tbody>
+                    }
+    ?>              </tbody>
 
-                <tr class='states_table_last'>
-                    <td></td>
-                    <td><?php echo $data_tdy[0]; ?></td>
-                    <td><?php echo (int)$data_tdy[0]-(int)$data_tdy[1]; ?></td>
-                    <td><?php echo $data_tdy[1]; ?></td>
-                    <td><?php echo $data_tdy[2]; ?></td>
-                    <td><?php echo $data_tdy[3]; ?></td>
-                    <td><?php echo $data_tdy[4]; ?></td>
-                    <td><?php echo $data_tdy[5]; ?></td>
-                </tr>
-            </table>
+                    <tr class='states_table_last'>
+                        <td></td>
+                        <td><?php echo $data_tdy[0]; ?></td>
+                        <td><?php echo (int)$data_tdy[0]-(int)$data_tdy[1]; ?></td>
+                        <td><?php echo $data_tdy[1]; ?></td>
+                        <td><?php echo $data_tdy[2]; ?></td>
+                        <td><?php echo $data_tdy[3]; ?></td>
+                        <td><?php echo $data_tdy[4]; ?></td>
+                        <td><?php echo $data_tdy[5]; ?></td>
+                    </tr>
+                </table>
+            </div>
         </section>
 <?php
     }
 ?>  
 
     <section class="container bottom_section">
-        <form onsubmit="return false;">
-            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='start_date' class="input_date" placeholder="Start date">
-            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='end_date' class="input_date" placeholder="End date">
-            <input type="submit" value="Filter" id='submit_filter' class="input_submit">
-        </form>
-        <span id='filter_message'>Please select a valid range</span>
-        <div id="trend_graph"></div>
+        <div class="bottom_section_top">
+            <h1>Stats By Date</h1>
+            <p>Data for <?php if ($state=='') echo 'Malaysia'; else echo $state; ?> over time</p>
+        </div>
+        <div class="bottom_section_bottom">
+            <p>Select date range to view: </p>
+            <form id="filter_form" onsubmit="return false;">
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='start_date' class="input_date" placeholder="Start date">
+                <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='end_date' class="input_date" placeholder="End date">
+                <input type="submit" value="Filter" id='submit_filter' class="input_submit">
+            </form>
+            <span id='filter_message'>Please select a valid range!</span>
+
+            <p id="trend_graph_info">Show / hide data by clicking on the legends.</p>
+            <div id="trend_graph"></div>
+        </div>
     </section>
     
 
