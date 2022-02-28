@@ -33,8 +33,7 @@
 
         <div class="container top_section_bottom">
             <div class="row">
-                <div class="col-sm data_card">
-                    <div class="" id="data_card_cases">
+                <div class="col-sm data_card" id="data_card_cases">
                         <h2>Cases</h2>
                         <h3>New cases</h3>
                         <p class="number_counter"><?php echo $data_tdy[0]; ?></p>
@@ -47,7 +46,6 @@
                                 <h4>(Imported)</h4>
                                 <p><?php echo $data_tdy[1]; ?></p>
                             </div>
-                        </div>
                         <h3 class="data_card_cases_active">Active cases</h3>
                         <p><span class="number_counter"><?php echo $data_tdy[2]; ?></span>
                         <span id="active_diff">

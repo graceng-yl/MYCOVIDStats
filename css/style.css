@@ -137,6 +137,21 @@ a:hover{
     color: var(--c_fontblack);
     background-color: var(--c_fglightblue);
 }
+#data_card_cases{
+    background-color: rgb(241, 202, 58, 0.8);
+}
+#data_card_recovs{
+    background-color: rgb(111, 150, 84, 0.8);
+    color: var(--c_fontwhite);
+}
+#data_card_deaths{
+    background-color: rgb(226, 67, 30, 0.7);
+    color: var(--c_fontwhite);
+}
+#data_card_vacs{
+    background-color: rgb(28, 145, 192, 0.7);
+    color: var(--c_fontwhite);
+}
 .top_section_bottom p{
     font-size: var(--font_large);
     margin: 0;
