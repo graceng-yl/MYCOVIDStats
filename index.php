@@ -133,14 +133,14 @@
 
     <section class="container bottom_section">
         <form onsubmit="return false;">
-            <input type="date" id='start_date'>
-            <input type="date" id='end_date'>
-            <input type="submit" value="Filter" id='submit_filter'>
+            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='start_date' class="input_date" placeholder="Start date">
+            <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id='end_date' class="input_date" placeholder="End date">
+            <input type="submit" value="Filter" id='submit_filter' class="input_submit">
         </form>
         <span id='filter_message'>Please select a valid range</span>
-        
+        <div id="trend_graph"></div>
     </section>
-    <div id="trend_graph"></div>
+    
 
 <?php
     include('pages/footer.php'); 

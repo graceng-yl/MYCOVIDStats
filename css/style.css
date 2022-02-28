@@ -1,6 +1,7 @@
 :root{
     --c_fontwhite: rgb(255, 255, 255); 
     --c_fontblack: rgb(39, 39, 39);
+    --c_fontblue:rgb(93, 121, 163);
     --c_bggrey: rgb(54, 54, 51);
     --c_fglightblue: rgba(237, 239, 243, 0.6);
     --c_fgdarkblue: rgb(93, 121, 163, 0.8);
@@ -22,7 +23,7 @@
 body{
     background-color: var(--c_bggrey);
     color: var(--c_fontwhite);
-    background-image: url("../content/Johor.png");
+    background-image: url("../content/Malaysia.png");
     background-repeat: no-repeat;
     background-position: top;
     background-size: contain;
@@ -39,6 +40,12 @@ h3{
 }
 h4{
     font-size: var(--font_small);
+}
+a{
+    color: var(--c_fontwhite);
+}
+a:hover{
+    color: var(--c_fontblue);
 }
 
 /* header nav bar */
@@ -58,9 +65,6 @@ h4{
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2); */
     /* position: fixed; */
-}
-nav a{
-    color: var(--c_fontwhite);
 }
 #nav_left{
     margin-left: 0;
@@ -194,14 +198,74 @@ nav a{
 
 
 /* Bottom section */
-.bottom_section{
-    margin-top: 50px;
-    padding-top: 50px;
-    border-top: var(--c_borderwhite) 1px solid;
+.middle_section{
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    border-bottom: var(--c_borderwhite) 1px solid;
+}
+#filter_message{
+    display: none;
+}
+.input_date{
+    background-color: var(--c_fglightblue);
+    box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 5px;
+    border: 1px solid var(--c_borderwhite);
+    padding: 5px 10px;
+    outline: 0;
+    margin-right: 5px;
+    width: 15%;
+}
+.input_submit{
+    background-color: var(--c_fgdarkblue);
+    box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 5px;
+    border: 1px solid var(--c_borderwhite);
+    padding: 5px 15px;
+    outline: 0;
+    color: var(--c_fontwhite);
+}
+#trend_graph{
+    margin-top: 3%;
+}
+#trend_graph > div > div{
+    margin-left: -5%;
+
+    margin-bottom: 3%;
+}
+#trend_graph > div{
+    background-color: rgba(93, 121, 163, 0.4);
+    box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 20px;
+    border: 1px solid var(--c_borderwhite);
 }
 #trend_graph svg > rect{
     fill: none;
 }
-#filter_message{
-    display: none;
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g text,
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(4) > g text,
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g g text{
+    fill: var(--c_fontwhite);
+    font-style: normal;
+}
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g.google-visualization-tooltip > g > text{
+    fill: var(--c_fontblack);
+}
+#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g > path{
+    fill: var(--c_fglightblue);
+}
+
+
+/* footer */
+footer{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: var(--font_small);
 }

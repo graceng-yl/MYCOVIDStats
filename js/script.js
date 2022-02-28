@@ -54,10 +54,13 @@ function drawChart() {
         title: '',
         legend: { position: 'right' },
         focusTarget: 'category',
-        height: jQuery(window).height(),
-        width: jQuery(window).width()*0.98,
-        vAxis: { title: 'Number', viewWindow: { min:0 } },
-        hAxis: { title: 'Date' },
+        height: jQuery(window).height()*0.9,
+        width: jQuery(window).width()*0.9,
+        chartArea: {'width': '65%', 'height': '80%'},
+        hAxis:{gridlines: {color: 'transparent', minSpacing: 20}},
+        vAxis:{gridlines: {color: 'transparent', minSpacing: 50}},
+        // vAxis: { title: 'Number', viewWindow: { min:0 } },
+        // hAxis: { title: 'Date' },
         backgroundColor: 'white'
     };
     var chart = new google.visualization.LineChart(document.getElementById('trend_graph'));
@@ -111,15 +114,23 @@ jQuery(document).ready(function() {
         document.getElementById('state_form').submit();
     });
 
-    //if state is selected, keep it selected in dropdown
     var state = document.getElementById('state_div').title;
     //var state = jQuery('.ui-selectmenu-text').text()
+
+    //if state is selected, keep it selected in dropdown
     jQuery.each(jQuery('#state_form_dropdown option'), function(i, val){
         if(val.value == state){
             jQuery(val).attr('selected','selected');
         }
     });
-    
+
+    //change background map according to selected state
+    if(state==""){
+        jQuery('body').css('background-image','url(content/Malaysia.png)');
+    }
+    else{
+        jQuery('body').css('background-image','url(content/'+state.replace(' ','_')+'.png)');
+    }
 
     //restrict input date range in trend graph
     jQuery('#start_date').attr('min', date_min);
