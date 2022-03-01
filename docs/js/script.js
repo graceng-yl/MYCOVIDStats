@@ -177,18 +177,18 @@ jQuery(document).ready(function() {
 
     //datatable for states table
     jQuery('#states_table').DataTable({
-        "responsive": true,
+        // "responsive": true,
         "columnDefs": [
             { 
                 "orderSequence": [ "desc","asc" ], //order by desc first
                 "targets": [ 1,2,3,4,5,6,7 ]
             },
-            { responsivePriority: 1, targets: 0 },
-            { responsivePriority: 2, targets: 1 },
-            { responsivePriority: 3, targets: 5 },
-            { responsivePriority: 4, targets: 6 },
-            { responsivePriority: 5, targets: 7 },
-            { responsivePriority: 5, targets: 4 },
+            // { responsivePriority: 1, targets: 0 },
+            // { responsivePriority: 2, targets: 1 },
+            // { responsivePriority: 3, targets: 5 },
+            // { responsivePriority: 4, targets: 6 },
+            // { responsivePriority: 5, targets: 7 },
+            // { responsivePriority: 5, targets: 4 },
         ], 
             
         "order": [[ 1, "desc" ]], //default order new cases by desc
