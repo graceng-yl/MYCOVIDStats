@@ -82,8 +82,8 @@
                     </div>
                 </div>
             </div>
-            <p id="update_div">*Data updated daily by the next day</p>
         </div>
+        <p id="update_div">*Data updated daily by the next day</p>
     </section>
 
 <?php 

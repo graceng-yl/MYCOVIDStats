@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
         jQuery('body').css('background-image','url(content/Malaysia.png)');
     }
     else{
-        jQuery('body').css('background-image','url(content/'+state.replace(' ','_')+'.png)');
+        jQuery('body').css('background-image','url(content/'+state.replaceAll(' ','_')+'.png)');
     }
 
     //restrict input date range in trend graph

@@ -138,7 +138,7 @@ a:hover{
     background-color: var(--c_fglightblue);
 }
 #data_card_cases{
-    background-color: rgb(241, 202, 58, 0.8);
+    background-color: rgb(241, 202, 58, 0.7);
 }
 #data_card_recovs{
     background-color: rgb(111, 150, 84, 0.8);
@@ -158,6 +158,8 @@ a:hover{
 }
 .data_card_cases_sub{
     display: inline-block;
+    font-style: italic;
+    margin-top: 10px;
 }
 .data_card_cases_sub p{
     font-size: var(--font_small);
@@ -166,13 +168,14 @@ a:hover{
     margin-top: 20px;
 }
 #data_card_cases h2{
-    font-size: var(--font_medium);
+    font-style: italic;
 }
 #data_card_cases h3{
     font-size: var(--font_large);
 }
 #active_diff{
     font-size: var(--font_small);
+    font-style: italic;
 }
 #update_div{
     margin-top: 20px;
