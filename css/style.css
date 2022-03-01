@@ -298,17 +298,15 @@ a:hover{
     outline: 0;
     color: var(--c_fontwhite);
 }
-#trend_graph > div > div{
-    /* margin-left: -5%; */
-    
-}
+/*
 #trend_graph > div > div:nth-child(1){
     margin-top: 2%;
     margin-bottom: 3%;
     width: 80%;
     position: unset !important;
-}
-#trend_graph > div{
+} */
+#trend_graph{
+    padding: 30px;
     background-color: rgba(93, 121, 163, 0.4);
     box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
     backdrop-filter: blur( 4px );
@@ -316,7 +314,7 @@ a:hover{
     border-radius: 20px;
     border: 1px solid var(--c_borderwhite);
 }
-#trend_graph svg > rect{
+/* #trend_graph svg > rect{
     fill: none;
     width: 100%;
 }
@@ -329,9 +327,6 @@ a:hover{
     fill: var(--c_fontwhite);
     font-style: normal;
 }
-/* #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g rect{
-    height: 50px;
-} */
 #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g:hover{
     cursor: pointer;
 }
@@ -348,7 +343,9 @@ a:hover{
 }
 .goog-tooltip div{
     color: var(--c_fontblack);
-}
+} */
+
+
 /* footer */
 footer{
     text-align: center;
@@ -361,6 +358,7 @@ footer p{
 }
 
 
+/* responsive */
 @media (max-width: 1000px){
     .top_section_bottom{
         width: 80%;
