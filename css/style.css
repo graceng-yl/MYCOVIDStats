@@ -247,7 +247,7 @@ a:hover{
 }
 .middle_section{
     margin-bottom: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     border-bottom: var(--c_borderwhite) 1px solid;
 }
 
@@ -263,7 +263,7 @@ a:hover{
 }
 #trend_graph_info{
     text-align: right;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: var(--font_small);
 }
 #filter_form{
@@ -298,15 +298,8 @@ a:hover{
     outline: 0;
     color: var(--c_fontwhite);
 }
-/*
-#trend_graph > div > div:nth-child(1){
-    margin-top: 2%;
-    margin-bottom: 3%;
-    width: 80%;
-    position: unset !important;
-} */
 #trend_graph{
-    padding: 30px;
+    padding: 50px;
     background-color: rgba(93, 121, 163, 0.4);
     box-shadow: 0 8px 32px 0 var(--c_shadowgrey);
     backdrop-filter: blur( 4px );
@@ -314,42 +307,12 @@ a:hover{
     border-radius: 20px;
     border: 1px solid var(--c_borderwhite);
 }
-/* #trend_graph svg > rect{
-    fill: none;
-    width: 100%;
-}
-#trend_graph svg{
-    width: 100%;
-}
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g text,
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(4) > g text,
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g g text{
-    fill: var(--c_fontwhite);
-    font-style: normal;
-}
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(3) > g:hover{
-    cursor: pointer;
-}
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g.google-visualization-tooltip > g > text{
-    fill: var(--c_fontblack);
-}
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g > path{
-    fill: var(--c_fglightblue);
-}
-#trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(4) > rect{
-    stroke: var(--c_fgdarkblue);
-    stroke-opacity: 0.5;
-    stroke-width: 1px;
-}
-.goog-tooltip div{
-    color: var(--c_fontblack);
-} */
 
 
 /* footer */
 footer{
     text-align: center;
-    margin-top: 70px;
+    margin-top: 80px;
     margin-bottom: 30px;
     font-size: var(--font_small);
 }
@@ -365,5 +328,30 @@ footer p{
     }
 }
 @media (max-width: 768px){
-    
+    #trend_graph{
+        padding: 30px;
+    }
+    #trend_graph canvas{
+        height: 50%;
+    }
+    .middle_section h1, .bottom_section h1{
+        font-size: var(--font_xlarge);
+    }
+    .middle_section_top p, .bottom_section p{
+        font-size: var(--font_small);
+    }
+    .input_date{
+        width: 25%;
+    }
+    .input_submit, .input_date{
+        font-size: var(--font_small);
+    }
+}
+@media (max-width: 520px){
+    .nav-item{
+        width: 40%;
+    }
+    #state_form_dropdown{
+        width: 50%;
+    }
 }

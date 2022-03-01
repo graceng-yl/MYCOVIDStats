@@ -2,33 +2,32 @@ function drawChart(){
     chart = new Chart(document.getElementById('trend_graph').getContext('2d'), {
         type: 'line', data: {
             labels: labels.slice(start_date_pos, end_date_pos+1),
-            datasets: [
-            {
+            datasets: [{
                 label: 'New Cases',
                 data: data[0].slice(start_date_pos, end_date_pos+1),
                 borderColor: '#f1ca3a',
-            },
-            {
+                pointRadius: 0,
+            },{
                 label: 'Active Cases',
                 data: data[1].slice(start_date_pos, end_date_pos+1),
                 borderColor: '#e7711b',
-            },
-            {
+                pointRadius: 0,
+            },{
                 label: 'Recovered',
                 data: data[2].slice(start_date_pos, end_date_pos+1),
                 borderColor: '#6f9654',
-            },
-            {
+                pointRadius: 0,
+            },{
                 label: 'Deaths',
                 data: data[3].slice(start_date_pos, end_date_pos+1),
                 borderColor: '#e2431e',
-            },
-            {
+                pointRadius: 0,
+            },{
                 label: 'Vaccinations',
                 data: data[4].slice(start_date_pos, end_date_pos+1),
                 borderColor: '#1c91c0',
-            }
-            ]
+                pointRadius: 0,
+            }]
         },
         options: {
             responsive: true,
@@ -38,21 +37,47 @@ function drawChart(){
                     time: {
                         tooltipFormat: 'd LLL y',
                     },
+                    ticks: {
+                        color: '#ffffff',
+                        font:{
+                            family: "'Helvetica', 'Arial', sans-serif",
+                            size: 16
+                        },
+                    }
                 },
+                y: {
+                    ticks: {
+                        color: '#ffffff',
+                        font:{
+                            family: "'Helvetica', 'Arial', sans-serif",
+                            size: 16
+                        },
+                    }
+                }
             },
             interaction: {
                 intersect: false,
                 mode: 'index',
-            },  
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#ffffff',
+                        usePointStyle: true,
+                        font:{
+                            family: "'Helvetica', 'Arial', sans-serif",
+                            size: 16
+                        },
+                    },
+                }
+            }  
         }
     });
 }
 
 function addrows(start_date, end_date){
     for(var record=0; record<labels.length; record++){
-        // console.log(labels[record], start_date);
         if (+labels[record] === +start_date){
-            
             start_date_pos = record;
         }
         if (+labels[record] === +end_date){
