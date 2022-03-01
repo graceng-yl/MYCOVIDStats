@@ -196,6 +196,7 @@ a:hover{
     border-bottom: none;
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
+    overflow-x: auto;
 }
 #states_table tr{
     background-color: rgb(255, 255, 255, 0);
@@ -299,8 +300,13 @@ a:hover{
 }
 #trend_graph > div > div{
     /* margin-left: -5%; */
+    
+}
+#trend_graph > div > div:nth-child(1){
     margin-top: 2%;
     margin-bottom: 3%;
+    width: 80%;
+    position: unset !important;
 }
 #trend_graph > div{
     background-color: rgba(93, 121, 163, 0.4);
@@ -312,6 +318,10 @@ a:hover{
 }
 #trend_graph svg > rect{
     fill: none;
+    width: 100%;
+}
+#trend_graph svg{
+    width: 100%;
 }
 #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(5) > g text,
 #trend_graph > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(4) > g text,
@@ -348,4 +358,14 @@ footer{
 }
 footer p{
     margin-bottom: 5px;
+}
+
+
+@media (max-width: 1000px){
+    .top_section_bottom{
+        width: 80%;
+    }
+}
+@media (max-width: 768px){
+    
 }

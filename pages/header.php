@@ -10,6 +10,7 @@
 ?>
         </title>
         <meta name="description" content="View the latest Malaysia COVID-19 statistics by states">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="content/icon.png">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
