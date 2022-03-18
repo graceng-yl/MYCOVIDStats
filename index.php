@@ -1,5 +1,3 @@
-
-
 <?php 
     include('pages/header.php'); 
     include('pages/data.php');
