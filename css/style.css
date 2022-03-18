@@ -307,7 +307,9 @@ a:hover{
     border-radius: 20px;
     border: 1px solid var(--c_borderwhite);
 }
-
+#trend_graph_div{
+    height: 95vh;
+}
 
 /* footer */
 footer{
@@ -346,6 +348,19 @@ footer p{
     .input_submit, .input_date{
         font-size: var(--font_small);
     }
+    #trend_graph_div{
+        height: 80vh;
+    }
+    h2{
+        font-size: var(--font_medium);
+    }
+    h3{
+        font-size: var(--font_small);
+    }
+    h4{
+        font-size: var(--font_xsmall);
+    }
+
 }
 @media (max-width: 520px){
     .nav-item{
@@ -354,4 +369,5 @@ footer p{
     #state_form_dropdown{
         width: 50%;
     }
+    
 }

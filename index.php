@@ -157,7 +157,10 @@
             <span id='filter_message'>Please select a valid range!</span>
 
             <p id="trend_graph_info">Show / hide data by clicking on the legends.</p>
-            <canvas id="trend_graph"></canvas>
+
+            <div id="trend_graph_div">
+                <canvas id="trend_graph"></canvas>
+            </div>
         </div>
     </section>
     
